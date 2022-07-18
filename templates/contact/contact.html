@@ -1,0 +1,125 @@
+{% load static %}
+<div class="py-5" id="contactme">
+  <div class="text-center">
+    <h3 class="text-danger">Contact Me</h3>
+    <span class="text-danger fw-bold">--------</span>
+  </div>
+  <h5 class="text-white text-center py-5">
+    Have any questions? I'd love to hear from you.
+  </h5>
+  <div class="row py-5 border-contact">
+    <div
+      class="col-lg-6 text-white"
+      data-aos="zoom-in"
+      data-aos-duration="3000"
+      data-aos-easing="ease-in-out-cubic"
+    >
+      <h6>Contact Details</h6>
+      <hr style="width: 130px; color: rgb(255, 253, 253)" />
+      {% for contact in contacts %}
+      <div class="row py-5 gy-5">
+        <div class="col-2">
+          <img src="{% static 'img/telephone.png' %}" width="48px" alt="" />
+        </div>
+        <div class="col-10">
+          <div style="line-height: 14px">
+            <p class="text-secondary">Phone</p>
+            <span>{{contact.phone}}</span>
+          </div>
+        </div>
+        <div class="col-2">
+          <img src="{% static 'img/email.png' %}" width="48px" alt="" />
+        </div>
+        <div class="col-10">
+          <div style="line-height: 14px">
+            <p class="text-secondary">Email</p>
+            <span>{{contact.email}}</span>
+          </div>
+        </div>
+        <div class="col-2">
+          <img src="{% static 'img/address.png' %}" width="48px" alt="" />
+        </div>
+        <div class="col-10">
+          <div style="line-height: 14px">
+            <p class="text-secondary">Address</p>
+            <span>{{contact.address}}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div
+      class="col-lg-6"
+      data-aos="zoom-out"
+      data-aos-duration="3000"
+      data-aos-easing="ease-in-out-cubic"
+    >
+      <!-- Bootstrap 5 starter form -->
+      <div class="py-3 text-white">
+        <form id="contactForm" action="" method="POST">
+          {% csrf_token %}
+          <!-- Name input -->
+          <div class="mb-3">
+            <!-- <label class="form-label" for="name">Name</label> -->
+            <input
+              class="form-control"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Name"
+              required
+            />
+          </div>
+
+          <!-- Phone input -->
+          <div class="mb-3">
+            <!-- <label class="form-label" for="name">Subject</label> -->
+            <input
+              class="form-control"
+              id="name"
+              name="subject"
+              type="text"
+              placeholder="Subject"
+              required
+            />
+          </div>
+
+          <!-- Email address input -->
+          <div class="mb-3">
+            <!-- <label class="form-label" for="emailAddress">Email Address</label> -->
+            <input
+              class="form-control"
+              id="emailAddress"
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              required
+            />
+          </div>
+
+          <!-- Message input -->
+          <div class="mb-3">
+            <!-- <label class="form-label" for="message">Message</label> -->
+            <textarea
+              class="form-control"
+              id="message"
+              name="message"
+              type="text"
+              placeholder="Message"
+              style="height: 10rem"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Form submit button -->
+          <div class="">
+            <button class="btn btn-primary btn-sm" type="submit">
+              Send Message
+            </button>
+            <button class="btn btn-danger btn-sm" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+{% load static %}
+<div class="py-5" id="aboutme">
+  <div class="text-center">
+    <h3 class="text-danger">About Me</h3>
+    <span class="text-danger fw-bold">--------</span>
+  </div>
+  <div class="row py-3">
+    <div
+      class="col-lg-5"
+      data-aos="flip-left"
+      data-aos-duration="3000"
+      data-aos-easing="ease-in-out-cubic"
+    >
+      <div class="mb-4">
+        <div
+          class="card text-white card-has-bg click-col"
+          style="background-image: url('{% static 'img/thandarphru.JPEG' %}')"
+        >
+          <img
+            class="card-img d-none"
+            src="{% static 'img/thandarphru.JPEG' %}"
+            alt="Thandar Phru"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 text-white">
+      <div
+        data-aos="flip-right"
+        data-aos-duration="3000"
+        data-aos-easing="ease-in-out-cubic"
+      >
+        {% for about in abouts %} {{about.content.html | safe}} {% endfor %}
+      </div>
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="3000"
+        data-aos-easing="ease-in-out-cubic"
+      >
+        <a href="" download="" class="btn btn-primary btn-sm">Download CV</a>
+      </div>
+    </div>
+  </div>
+</div>

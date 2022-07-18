@@ -39,8 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Custom App
+    # Third Party
+    # 'djangocms_animate_on_scroll',
+    'django_quill',
+
+    # Local
     'hero',
+    'post',
+    'footer',
+    'contact',
+    'about',
+    'gallery',
+    'base',
 ]
 
 MIDDLEWARE = [
