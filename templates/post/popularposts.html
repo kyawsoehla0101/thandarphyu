@@ -1,0 +1,50 @@
+<!-- recent card -->
+<div class="row" >
+    <div data-aos="fade-down"
+    data-aos-duration="3000"
+    data-aos-easing="ease-in-out-cubic">
+        <h3 class="fw-bold text-danger">Popular Posts</h3>
+    <hr style="width: 130px; color: rgb(255, 253, 253)" />
+    </div>
+    {% for post in popularposts %}
+    <div class="mb-3 border-0 py-2" data-aos="fade-left"
+    data-aos-duration="3000"
+    data-aos-easing="ease-in-out-cubic">
+        <div class="row g-3">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <img src="{{post.image.url}}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-9 col-md-6 col-sm-12">
+                <div class="px-3">
+                    <a href="{% url 'detail' post.slug %}" class="text-decoration-none lh-base">
+                        {{post.title | truncatechars:60}} </a>
+                    <div class="pt-4">
+                        <span style="font-size: 13px" class=" text-secondary text-capitalize">{{post.category}} </span>
+
+                        <span class="float-end">
+                            <i class="fas fa-clock fw-lighter text-secondary"></i>
+                            <span class="text-lighter text-secondary" style="font-size: 13px">
+                                {{ post.created|timesince}} ago
+                            </span>
+                    </div>
+
+                </div>
+            </div>
+        </div><hr style="color:red" />
+        
+    </div>
+
+    {% endfor %}
+</div>
+
+<div class="row my-3">
+    <div data-aos="flip-left"
+    data-aos-duration="3000"
+    data-aos-easing="ease-in-out-cubic">
+        <h3 class="fw-bold text-danger">Tag</h3>
+    <hr style="width: 60px; color: rgb(255, 253, 253)" />
+    </div>
+<div class="col">
+   {% include 'post/tag.html' %}
+</div>
+</div>

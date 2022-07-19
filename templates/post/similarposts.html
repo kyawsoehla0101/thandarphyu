@@ -1,0 +1,63 @@
+{% load static %}
+<div
+  class="text-center"
+  data-aos="flip-right"
+  data-aos-duration="3000"
+  data-aos-easing="ease-in-out-cubic"
+>
+  <h3 class="text-danger">Similar</h3>
+  <span class="text-danger fw-bold">--------</span>
+</div>
+<div class="row py-3">
+  {% for post in similarposts %}
+  <div
+    class="col-sm-12 col-md-6 col-lg-3 mb-4"
+    data-aos="zoom-in"
+    data-aos-duration="3000"
+    data-aos-easing="ease-in-out-cubic"
+  >
+    <div
+      class="card text-white card-has-bg click-col"
+      style="
+        background-image: url('{{post.image.url}}');
+      "
+    >
+      <img
+        class="card-img d-none"
+        src="{{post.image.url}}"
+        alt="{{post.title}}"
+      />
+      <div class="card-img-overlay d-flex flex-column">
+        <div class="card-body">
+          <small class="card-meta mb-2">{{post.category}}</small>
+          <h5 class="card-title mt-0">
+            <a class="text-white" href="{% url 'detail' post.slug %}"
+              >{{post.title | truncatechars:50}}</a
+            >
+          </h5>
+          <small
+            ><i class="far fa-clock"></i> {{post.created | timesince}}
+            ago</small
+          >
+        </div>
+        <div class="card-footer">
+          <div class="media">
+            <img
+              class="mr-3 rounded-circle"
+              src="{% static 'img/processed-f3b3be6a-9ce7-43aa-8fae-0dc50f5e1a0d_wgcuE2yP.JPEG' %}"
+              alt="Thandar Phru"
+              style="max-width: 50px"
+            />
+            <div class="media-body">
+              <h6 class="my-0 text-white d-block">
+                {{post.author.first_name}} {{post.author.last_name}}
+              </h6>
+              <small>Digital Creator!</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

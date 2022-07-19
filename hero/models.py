@@ -8,6 +8,7 @@ class Hero(models.Model):
   image = models.ImageField(upload_to='images')
   
   class Meta:
+    ordering = ('-id',)
     verbose_name = 'Hero'
     verbose_name_plural = 'Hero'
     

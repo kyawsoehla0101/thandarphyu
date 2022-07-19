@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-dark navbar-expand-lg bg-color fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="#">Thandar Phru</a>
+    <a class="navbar-brand fw-bold" href="{% url 'home' %}">Thandar Phru</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,50 +15,39 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% url 'home' as url %}
         <li class="nav-item">
-          <a class="nav-link fw-bold" aria-current="page" href="#">Home</a>
+          <a class="nav-link fw-bold {% if request.path == url %}border-bottom active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
 
+        {% for category in categories %}
+        {% url 'category' category.slug as url %}
         <li class="nav-item">
-          <a class="nav-link fw-bold" href="#">Category</a>
+          <a class="nav-link fw-bold {% if request.path == url %}border-bottom active{% endif %}" href="{% url 'category' category.slug %}">{{category.name}}</a>
         </li>
+        {% endfor %}
+        {% url 'gallery' as url %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Image</a>
+          <a class="nav-link fw-bold {% if request.path == url %}border-bottom active{% endif %}" href="{% url 'gallery' %}">Gallery</a>
         </li>
+        {% url 'about' as url %}
         <li class="nav-item">
-          <a class="nav-link" href="#aboutme">About</a>
+          <a class="nav-link fw-bold {% if request.path == url %}border-bottom active{% endif %}" href="{% url 'about' %}">About</a>
         </li>
+        {% url 'contact' as url %}
         <li class="nav-item">
-          <a class="nav-link" href="#contactme">Contact</a>
+          <a class="nav-link fw-bold {% if request.path == url %}border-bottom active{% endif %}" href="{% url 'contact' %}">Contact</a>
         </li>
         <li class="nav-item stick">
           <a class="nav-link" disabled href="#">|</a>
         </li>
+        {% for social in socials %}
         <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><img src="{% static 'img/facebook.png' %}" width="23px" alt=""
+          <a class="nav-link" href="{{social.social_link}}" target="_blank"
+            ><img src="{{social.icon.url}}" width="23px" alt="Thandar Phru"
           /></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><img src="{% static 'img/twitter.png' %}" width="23px" alt=""
-          /></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><img src="{% static 'img/telegram.png' %}" width="23px" alt=""
-          /></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><img src="{% static 'img/youtube.png' %}" width="23px" alt=""
-          /></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><img src="{% static 'img/instagram.png' %}" width="23px" alt=""
-          /></a>
-        </li>
+        {% endfor %}
       </ul>
     </div>
   </div>

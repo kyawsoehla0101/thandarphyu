@@ -9,6 +9,7 @@ class Contact(models.Model):
 #   longitude = models.DecimalField(max_digits=9, decimal_places=6)
   
   class Meta:
+    ordering = ('-id',)
     verbose_name = 'Contact'
     verbose_name_plural = 'Contact'
     

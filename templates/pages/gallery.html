@@ -1,0 +1,59 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Gallery{% endblock title %}
+{% block content %}
+<div class="py-5" id="gallery">
+    <div class="text-center py-5">
+      <h3 class="text-danger">Gallery</h3>
+      <span class="text-danger fw-bold">--------</span>
+    </div>
+    <div
+      class="row gy-4"
+      data-aos="fade-zoom-in"
+      data-aos-duration="3000"
+      data-aos-easing="ease-in-out-cubic"
+    >
+      <!-- Gallery 3 item -->
+      {% for gallery in galleries %}
+      <div class="col-lg-4 mb-3 mb-lg-0">
+        <div class="hover hover-3 text-white">
+          <img src="{{gallery.image.url}}" alt="{{gallery.name}}" />
+          <div class="hover-overlay"></div>
+          <div class="hover-3-content px-5 py-4">
+            <p class="hover-3-description small mb-0">
+              {{gallery.caption}}
+              <br />
+              <a href="{{gallery.image.url}}" class="btn btn-sm btn-success"
+                >View</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  
+      <!-- Gallery 3 Item    -->
+      {% comment %}
+      <div class="col-lg-3">
+        <div class="hover hover-3 text-white rounded">
+          <img
+            src="https://images.pexels.com/photos/3715087/pexels-photo-3715087.jpeg"
+            alt=""
+          />
+          <div class="hover-overlay"></div>
+          <div class="hover-3-content px-5 py-4">
+            <h3 class="hover-3-title text-uppercase font-weight-bold mb-1">
+              <span class="font-weight-light">Image </span>Caption
+            </h3>
+            <p class="hover-3-description small text-uppercase mb-0">
+              Gosnippets is the best free Bootstrap snippets provider<br />Go
+              Awesome.
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endcomment %}
+    </div>
+  </div>
+  
+
+{% endblock content %}

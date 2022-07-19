@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-
+from django_quill.fields import QuillField
 
 
 
@@ -25,6 +25,10 @@ class Category(models.Model):
         value = self.name
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Category'
     def __str__(self):
         return self.name
 
@@ -48,6 +52,9 @@ class Tag(models.Model):
         value = self.name
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
+    class Meta:
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tag'
     def __str__(self):
         return self.name
 
@@ -59,16 +66,19 @@ class Post(models.Model):
             editable=False,
         )
     author = models.ForeignKey(User, on_delete=models.CASCADE ,default='Thandar Phru')
-    content = models.TextField(null=True)
+    content = QuillField()
     short_content = models.TextField(null=True,blank=True)
     image = models.ImageField(upload_to = 'static/%Y/%m/%d/postimages', blank= True,null=True,default='static/postimages/contactme.JPEG')
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     feature = models.BooleanField(default=True)
+    views=models.IntegerField(default=0,null=True,blank=True)
 
     class Meta:
         ordering = ('-created',)
+        verbose_name = 'Post'
+        verbose_name_plural = 'Post'
 
     def get_absolute_url(self):
         kwargs = {
@@ -84,16 +94,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-    
-class Gallery(models.Model):
-    name = models.CharField(max_length=100, null=True,blank=True, default='Thandar Phru')
-    image= models.ImageField(upload_to="static/%Y/%m/%d/images")
-    created = models.DateTimeField(auto_now_add=True,null=True,blank=True)
-    updated = models.DateTimeField(auto_now=True,null=True,blank=True)
-
-    class Meta:
-        ordering = ('-created',)
-
-    def __str__(self):
-        return self.name
-    

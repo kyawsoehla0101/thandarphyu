@@ -20,6 +20,7 @@ class Footer(models.Model):
     website_link = models.CharField(max_length=200,null=True,blank=True)
 
     class Meta:
+        ordering = ('-id',)
         verbose_name = 'Footer'
         verbose_name_plural = 'Footer'
     

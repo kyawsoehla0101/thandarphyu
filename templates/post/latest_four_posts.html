@@ -25,9 +25,9 @@
       <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
           <small class="card-meta mb-2">{{post.category}}</small>
-          <h4 class="card-title mt-0">
-            <a class="text-white" href="{% url 'detail' post.slug %}">{{post.title}}</a>
-          </h4>
+          <h5 class="card-title mt-0">
+            <a class="text-white" href="{% url 'detail' post.slug %}">{{post.title | truncatechars:50}}</a>
+          </h5>
           <small
             ><i class="far fa-clock"></i> {{post.created | timesince}}
             ago</small
