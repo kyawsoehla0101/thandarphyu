@@ -1,4 +1,5 @@
 from django.db import models
+from django_quill.fields import QuillField
 
 # Create your models here.
 class Social(models.Model):
@@ -16,6 +17,7 @@ class Social(models.Model):
 class Footer(models.Model):
     social = models.ManyToManyField(Social,blank=True)
     copyright = models.CharField(max_length=200,null=True,blank=True)
+    privacy_policy = QuillField(null=True,blank=True)
     website_name = models.CharField(max_length=200,null=True,blank=True)
     website_link = models.CharField(max_length=200,null=True,blank=True)
 

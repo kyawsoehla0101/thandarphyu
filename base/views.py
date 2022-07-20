@@ -76,3 +76,11 @@ def tagView(request,slug):
     tagposts = Post.objects.filter(tags=tag)
     context = {'categories':categories,'socials':socials,'footers':footers,'contacts':contacts,'tagposts':tagposts,'slug':slug}
     return render(request,'pages/tag.html', context)
+
+
+def privacyPolicyView(request):
+    categories = Category.objects.all()
+    socials = Social.objects.all()
+    footers = Footer.objects.all()
+    context = {'categories':categories,'socials':socials,'footers':footers}
+    return render(request,'pages/privacypolicy.html',context)

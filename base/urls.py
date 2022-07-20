@@ -8,4 +8,5 @@ urlpatterns = [
     path('contact-me/',views.contactView,name='contact'),
     path('tag/<str:slug>/', views.tagView,name='tag' ),
     path('category/<str:slug>/', views.categoryView,name='category' ),
+    path('privacy-policy/', views.privacyPolicyView,name='privacypolicy' ),
 ]

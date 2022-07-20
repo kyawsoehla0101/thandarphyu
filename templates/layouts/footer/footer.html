@@ -3,7 +3,7 @@
   <hr />
   {% for footer in footers %}
   <div class="row gy-3 py-3">
-    <div class="col-lg-4 col-md-16 col-sm-12 footer-center">
+    <div class="col-lg-3 col-md-16 col-sm-12 footer-center">
       <div class="social-icon text-white">
         {% for social in footer.social.all %}
         <a href="{{social.social_link}}" target="_blank">
@@ -12,13 +12,13 @@
         {% endfor %}
       </div>
     </div>
-    <div class="col-lg-4 col-md-16 col-sm-12 footer-center">
+    <div class="col-lg-6 col-md-16 col-sm-12 footer-center text-center">
       <span class="text-center">
         Copyright <img src="{% static 'img/copyright.png' %}" width="22px" /> {% now "Y" %}
-        {{footer.copyright}}
+        {{footer.copyright}} <a href="{% url 'privacypolicy' %}" class="text-decoration-none" target="_blank">Privacy Policy</a>
       </span>
     </div>
-    <div class="col-lg-4 col-md-16 col-sm-12 text-end footer-center">
+    <div class="col-lg-3 col-md-16 col-sm-12 text-end footer-center">
       <a href="{{footer.website_link}}" target="_blank" class="web"
         >{{footer.website_name}}</a
       >
