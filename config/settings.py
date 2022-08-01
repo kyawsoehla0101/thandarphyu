@@ -163,7 +163,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Thandar Phru' Blog",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "img/processed-ba2b0cb7-3c9c-4e51-b782-00d361f2bf12_aa54gnzk.jpeg",
+    # "site_logo": "img/processed-ba2b0cb7-3c9c-4e51-b782-00d361f2bf12_aa54gnzk.jpeg",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": None,
